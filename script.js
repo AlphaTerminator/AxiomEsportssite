@@ -198,58 +198,6 @@ document.addEventListener('DOMContentLoaded', function() {
     `;
     document.head.appendChild(style);
     
-    // ========================================
-    // GAME CARDS INTERACTION
-    // ========================================
-    const gameCards = document.querySelectorAll('.game-card:not(.add-game)');
-    
-    gameCards.forEach(card => {
-        card.addEventListener('click', function() {
-            const game = this.getAttribute('data-game');
-            const rostersSection = document.getElementById('rosters');
-            
-            if (rostersSection) {
-                // Find and click the corresponding roster tab
-                const rosterTab = document.querySelector(`.roster-tab[data-game="${game}"]`);
-                if (rosterTab) {
-                    rosterTab.click();
-                }
-                
-                // Scroll to rosters section
-                rostersSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            }
-        });
-    });
-    
-    // ========================================
-    // JOIN FORM HANDLING
-    // ========================================
-    const joinForm = document.getElementById('joinForm');
-    
-    if (joinForm) {
-        joinForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-            
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
-            
-            // Simple validation
-            if (!data.username || !data.email || !data.discord || !data.game) {
-                showNotification('Please fill in all required fields', 'error');
-                return;
-            }
-            
-            // Here you would typically send the data to a server
-            // For now, we'll just show a success message
-            console.log('Application submitted:', data);
-            
-            showNotification('Application submitted successfully! We\'ll contact you soon.', 'success');
-            
-            // Reset form
-            this.reset();
-        });
-    }
     
     // ========================================
     // NOTIFICATION SYSTEM
