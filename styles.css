@@ -1349,3 +1349,102 @@ section {
         font-size: 28px;
     }
 }
+
+/* ========================================
+   ARCADE SECTION - SNAKE GAME
+   ======================================== */
+.arcade-section {
+    background: var(--card-bg);
+}
+
+.arcade-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.snake-game-container {
+    background: var(--dark-bg);
+    border-radius: 15px;
+    padding: 30px;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.2);
+    max-width: 500px;
+    width: 100%;
+}
+
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.game-header h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 24px;
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.score-display {
+    display: flex;
+    gap: 20px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    color: var(--text-secondary);
+}
+
+.score-display span {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+#current-score,
+#high-score {
+    color: var(--primary-color);
+    font-weight: 700;
+}
+
+#snakeCanvas {
+    display: block;
+    margin: 0 auto 20px;
+    border: 2px solid rgba(0, 212, 255, 0.3);
+    border-radius: 10px;
+    background: #0a0a0f;
+    max-width: 100%;
+}
+
+.game-controls {
+    text-align: center;
+}
+
+.controls-hint {
+    margin-top: 15px;
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 14px;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 576px) {
+    .snake-game-container {
+        padding: 20px;
+    }
+
+    .game-header {
+        flex-direction: column;
+        text-align: center;
+        justify-content: center;
+    }
+
+    #snakeCanvas {
+        width: 100%;
+        height: auto;
+    }
+}

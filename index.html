@@ -21,7 +21,7 @@
             <ul class="nav-links">
                 <li><a href="#home" class="active">Home</a></li>
                 <li><a href="#games">Games</a></li>
-                <li><a href="#rosters">Rosters</a></li>
+                <li><a href="#arcade">Arcade</a></li>
                 <li><a href="#tournaments">Tournaments</a></li>
                 <li><a href="#events">Events</a></li>
                 <li><a href="#join">Join Us</a></li>
@@ -54,11 +54,6 @@
                 Dominate the competition. Join the elite. Wear the <span class="axm-highlight">AXM</span> tag with pride.
             </p>
             <div class="hero-stats">
-                <div class="stat-item">
-                    <span class="stat-number discord-members" data-count="0">0</span>
-                    <span class="stat-label">Active Members</span>
-                    <span class="stat-loading"><i class="fas fa-spinner fa-spin"></i> Loading from Discord...</span>
-                </div>
                 <div class="stat-item">
                     <span class="stat-number">25</span>
                     <span class="stat-separator">→</span>
@@ -106,28 +101,37 @@
         </div>
     </section>
 
-
-    <!-- Rosters Section -->
-    <section id="rosters" class="rosters-section">
+    <!-- Arcade Section - Mini Snake Game -->
+    <section id="arcade" class="arcade-section">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">
                     <span class="title-accent">///</span>
-                    ACTIVE ROSTERS
+                    ARCADE
                     <span class="title-accent">///</span>
                 </h2>
-                <p class="section-subtitle">Current active members from Discord with the AXM tag</p>
+                <p class="section-subtitle">Take a break and play some games!</p>
             </div>
-            
-            <div class="roster-loading" id="roster-loading">
-                <i class="fas fa-spinner fa-spin"></i>
-                <p>Loading active members from Discord...</p>
-            </div>
-            
-            <div class="roster-content" id="roster-content">
-                <!-- Dynamically loaded from Discord API -->
+            <div class="arcade-content">
+                <div class="snake-game-container">
+                    <div class="game-header">
+                        <h3><i class="fas fa-snake"></i> SNAKE</h3>
+                        <div class="score-display">
+                            <span>Score: <span id="current-score">0</span></span>
+                            <span>High Score: <span id="high-score">0</span></span>
+                        </div>
+                    </div>
+                    <canvas id="snakeCanvas" width="400" height="400"></canvas>
+                    <div class="game-controls">
+                        <button id="startBtn" class="btn btn-primary">
+                            <i class="fas fa-play"></i> Start Game
+                        </button>
+                        <p class="controls-hint">Use Arrow Keys or WASD to move</p>
+                    </div>
+                </div>
             </div>
         </div>
+    </section>
 
     <!-- Tournaments Section -->
     <section id="tournaments" class="tournaments-section">
@@ -156,7 +160,6 @@
                     </div>
                     <div class="tournament-info">
                         <h3>Axiom Championship Series</h3>
-                        <p class="tournament-prize">$10,000 Prize Pool</p>
                         <div class="tournament-details">
                             <span><i class="fas fa-calendar"></i> Dec 15-17, 2024</span>
                             <span><i class="fas fa-gamepad"></i> Multi-Game</span>
@@ -172,7 +175,6 @@
                     </div>
                     <div class="tournament-info">
                         <h3>Valorant Weekly #47</h3>
-                        <p class="tournament-prize">$500 Prize Pool</p>
                         <div class="tournament-details">
                             <span><i class="fas fa-calendar"></i> Every Saturday</span>
                             <span><i class="fas fa-clock"></i> 8 PM EST</span>
@@ -188,7 +190,6 @@
                     </div>
                     <div class="tournament-info">
                         <h3>CS2 Monthly Cup</h3>
-                        <p class="tournament-prize">$1,000 Prize Pool</p>
                         <div class="tournament-details">
                             <span><i class="fas fa-calendar"></i> Last Sunday</span>
                             <span><i class="fas fa-clock"></i> 2 PM EST</span>
@@ -204,7 +205,6 @@
                     </div>
                     <div class="tournament-info">
                         <h3>League Scrimmage Night</h3>
-                        <p class="tournament-prize">Practice & Rankings</p>
                         <div class="tournament-details">
                             <span><i class="fas fa-calendar"></i> Every Wednesday</span>
                             <span><i class="fas fa-clock"></i> 7 PM EST</span>
@@ -340,8 +340,8 @@
                             <span>AXM In-Game Tag</span>
                         </div>
                         <div class="perk">
-                            <i class="fas fa-prize"></i>
-                            <span>Prize Winnings</span>
+                            <i class="fas fa-users"></i>
+                            <span>Team Play</span>
                         </div>
                         <div class="perk">
                             <i class="fas fa-stream"></i>
