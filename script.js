@@ -368,7 +368,98 @@ document.addEventListener('DOMContentLoaded', function() {
         // You can add a typing effect here if desired
     }
     
-    console.log('Axiom E-Sports website loaded successfully! [AXM]');
+    console.log('Axiom E-Sports website loaded successfully! AXM');
+    
+    // ========================================
+    // DISCORD API INTEGRATION
+    // ========================================
+    // Fetch active members from Discord server
+    async function fetchDiscordMembers() {
+        const memberCountEl = document.querySelector('.discord-members');
+        const rosterContentEl = document.getElementById('roster-content');
+        const rosterLoadingEl = document.getElementById('roster-loading');
+        
+        // NOTE: Replace with your actual Discord Server ID and Bot Token endpoint
+        // For security, you should create a backend endpoint that fetches this data
+        // This is a client-side example - in production, use a server-side proxy
+        
+        const DISCORD_SERVER_ID = 'YOUR_SERVER_ID'; // Replace with your Discord Server ID
+        const DISCORD_API_URL = `https://discord.com/api/guilds/${DISCORD_SERVER_ID}/members?limit=1000`;
+        
+        try {
+            // In production, call your backend endpoint instead of Discord API directly
+            // Example: const response = await fetch('/api/discord-members');
+            
+            // For now, we'll simulate the API call with a placeholder
+            // When you have 150+ members or set up a bot, replace this with real API call
+            
+            // Simulated delay for demo
+            await new Promise(resolve => setTimeout(resolve, 1500));
+            
+            // Placeholder data - replace with actual API response when available
+            // Once you have a Discord bot or webhook set up, fetch real member data
+            const mockMemberCount = Math.floor(Math.random() * 50) + 10; // Random 10-60 for demo
+            
+            // Update member count
+            if (memberCountEl) {
+                memberCountEl.textContent = mockMemberCount;
+                memberCountEl.parentElement.querySelector('.stat-loading').style.display = 'none';
+            }
+            
+            // Generate roster cards from "Discord API"
+            if (rosterContentEl && rosterLoadingEl) {
+                rosterLoadingEl.style.display = 'none';
+                
+                // Mock member data - replace with real API response
+                const mockMembers = [
+                    { username: 'ShadowStrike', game: 'Valorant', role: 'Duelist' },
+                    { username: 'NightHawk', game: 'CS2', role: 'AWP' },
+                    { username: 'PhoenixRising', game: 'League', role: 'Mid Lane' },
+                    { username: 'VortexGaming', game: 'Rocket League', role: 'Striker' },
+                    { username: 'CyberNinja', game: 'Apex Legends', role: 'Assault' },
+                    { username: 'QuantumLeap', game: 'Overwatch 2', role: 'Support' },
+                    { username: 'NeonBlaze', game: 'Valorant', role: 'Controller' },
+                    { username: 'IronFist', game: 'CS2', role: 'Entry Fragger' }
+                ];
+                
+                let rosterHTML = '<div class="players-grid">';
+                mockMembers.forEach((member, index) => {
+                    const isCaptain = index === 0;
+                    rosterHTML += `
+                        <div class="player-card ${isCaptain ? 'captain' : ''}">
+                            <div class="player-avatar">
+                                ${isCaptain ? '<i class="fas fa-crown"></i>' : member.username.substring(0, 2).toUpperCase()}
+                            </div>
+                            <div class="player-details">
+                                <h4>${member.username}<span class="ingame-tag">AXM</span></h4>
+                                <span class="role">${member.role}</span>
+                                <span class="game-played">${member.game}</span>
+                            </div>
+                        </div>
+                    `;
+                });
+                rosterHTML += '</div>';
+                
+                rosterContentEl.innerHTML = rosterHTML;
+            }
+            
+        } catch (error) {
+            console.error('Error fetching Discord members:', error);
+            if (rosterLoadingEl) {
+                rosterLoadingEl.innerHTML = '<p>Error loading members. Please join our Discord to see active members!</p>';
+            }
+            if (memberCountEl) {
+                memberCountEl.textContent = '--';
+                memberCountEl.parentElement.querySelector('.stat-loading').style.display = 'none';
+            }
+        }
+    }
+    
+    // Initialize Discord member fetch
+    fetchDiscordMembers();
+    
+    // Refresh member count every 5 minutes
+    setInterval(fetchDiscordMembers, 300000);
 });
 
 // ========================================
